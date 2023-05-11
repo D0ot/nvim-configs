@@ -75,6 +75,7 @@ mason_lspconfig.setup({
 	ensure_installed = server_names,
 })
 
+-- TODO: add a default empty file as lsp server config
 for _, server_name in pairs(server_names) do
 	local config_file = "lsp/" .. server_name
 	local full_path = vim.fn.expand(vim.g.config_home .. "/lua/" .. config_file)

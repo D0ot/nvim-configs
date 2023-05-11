@@ -16,7 +16,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 	sort_by = "name",
 	root_dirs = {},
 	prefer_startup_root = false,
-	sync_root_with_cwd = false,
+	sync_root_with_cwd = true,
 	reload_on_bufenter = false,
 	respect_buf_cwd = false,
 	on_attach = "default",
@@ -157,7 +157,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		show_on_dirs = true,
 		show_on_open_dirs = true,
 		timeout = 400,
