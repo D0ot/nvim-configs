@@ -73,7 +73,6 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			"p00f/nvim-ts-rainbow",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		config = function()
@@ -249,4 +248,10 @@ require("lazy").setup({
 			require("plugins/which-key")
 		end,
 	},
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    config = function ()
+      require("plugins/rainbow-delimiters-nvim")
+    end
+  }
 })
