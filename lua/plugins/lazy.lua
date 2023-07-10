@@ -45,6 +45,7 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
+			"folke/neodev.nvim",
 		},
 	},
 	{
@@ -225,7 +226,7 @@ require("lazy").setup({
 		end,
 	},
 	{
-    "Maan2003/lsp_lines.nvim",
+		"Maan2003/lsp_lines.nvim",
 		config = function()
 			-- require("plugins/lsp-lines-nvim")
 		end,
@@ -233,7 +234,7 @@ require("lazy").setup({
 	{
 		"ggandor/leap.nvim",
 		config = function()
-			require("plugins/leap")
+			-- require("plugins/leap")
 		end,
 	},
 	{
@@ -248,10 +249,63 @@ require("lazy").setup({
 			require("plugins/which-key")
 		end,
 	},
-  {
-    "hiphish/rainbow-delimiters.nvim",
-    config = function ()
-      require("plugins/rainbow-delimiters-nvim")
-    end
-  }
+	{
+		"hiphish/rainbow-delimiters.nvim",
+		config = function()
+			require("plugins/rainbow-delimiters-nvim")
+		end,
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Flash Treesitter Search",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
+	},
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		config = function()
+			require("plugins/nvim-bqf")
+		end,
+	},
 })

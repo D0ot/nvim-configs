@@ -1,5 +1,6 @@
 ---@diagnostic disable-next-line: undefined-global
 local vim = vim
+require("neodev").setup({})
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local mason_lspconfig = require("mason-lspconfig")
@@ -45,7 +46,7 @@ local on_attach = function(client, bufnr)
 	local use_saga = true
 
 	if use_saga == true then
-		buf_set_keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
+		buf_set_keymap("n", "gr", "<cmd>Lspsaga finder tyd+ref+imp+def<CR>", opts)
 		buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 		buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 		buf_set_keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
@@ -55,7 +56,7 @@ local on_attach = function(client, bufnr)
 		buf_set_keymap("n", "g[", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
 		buf_set_keymap("n", "g]", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
 
-		buf_set_keymap("n", "<leader>ol", "<cmd>LSoutlineToggle<cr>", opts)
+		buf_set_keymap("n", "go", "<cmd>Lspsaga outline<cr>", opts)
 	end
 end
 

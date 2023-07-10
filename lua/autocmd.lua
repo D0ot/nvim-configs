@@ -61,3 +61,10 @@ vim.api.nvim_create_autocmd("InsertLeave *", {
 	callback = valid_rainbow,
 	group = rainbow_grp,
 })
+
+vim.cmd([[
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
+]])
