@@ -135,9 +135,12 @@ if vim.g.plugin_manager == "lazy" then
 	wk.register({
 		p = {
 			name = "Lazy",
-			s = { function ()
-			 require("lazy").sync()
-			end, "Lazy Sync" },
+			s = {
+				function()
+					require("lazy").sync()
+				end,
+				"Lazy Sync",
+			},
 		},
 	}, {
 		prefix = "<leader>",
@@ -226,4 +229,25 @@ wk.register({
 }, {
 	mode = { "n" },
 	prefix = "<leader>",
+})
+
+wk.register({
+	q = {
+		o = { "<cmd>copen<cr>", "open QuickFix" },
+		p = { "<cmd>cpreviou<cr>", "open prev item in QuickFix" },
+		n = { "<cmd>cnext<cr>", "Open Next item in QuickFix" },
+	},
+}, {
+	mode = { "n" },
+	prefix = "<leader>",
+})
+
+wk.register({
+	r = {
+		r = { "<cmd>edit!<cr>", "Discard the edit, and reload the file" },
+	},
+	{
+		mode = { "n" },
+		prefix = "<leader>",
+	},
 })
