@@ -258,6 +258,7 @@ require("lazy").setup({
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
+		opts = {},
 		keys = {
 			{
 				"s",
@@ -300,6 +301,12 @@ require("lazy").setup({
 				desc = "Toggle Flash Search",
 			},
 		},
+	},
+	{
+		"junegunn/fzf",
+		build = function()
+			vim.fn["fzf#install"]()
+		end,
 	},
 	{
 		"kevinhwang91/nvim-bqf",
