@@ -1,5 +1,5 @@
-require("scrollbar").setup{
-  handle = {
-    color = "#444444"
-  },
-}
+require("scrollbar").setup({
+	handle = {
+		color = "#444444",
+	},
+})

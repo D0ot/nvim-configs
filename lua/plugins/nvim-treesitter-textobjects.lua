@@ -69,7 +69,7 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 		-- INFO: seems not good for use
-    -- can use some key map to implement same function
+		-- can use some key map to implement same function
 		lsp_interop = {
 			enable = false,
 			border = "none",
@@ -79,7 +79,7 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 
-    -- TODO: enable this function with personal configuration
+		-- TODO: enable this function with personal configuration
 		move = {
 			enable = false,
 			set_jumps = true, -- whether to set jumps in the jumplist

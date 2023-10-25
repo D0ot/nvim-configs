@@ -1,7 +1,7 @@
-local onedark = require('onedark')
+local onedark = require("onedark")
 
-onedark.setup{
-  style = "cool"
-}
+onedark.setup({
+	style = "cool",
+})
 
 onedark.load()

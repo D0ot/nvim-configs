@@ -1,6 +1,5 @@
-
 ---@diagnostic disable-next-line: undefined-global
-local v = vim;
+local v = vim
 local g = v.g
 local opt = v.opt
 
@@ -8,18 +7,18 @@ local opt = v.opt
 g.config_home = "$HOME/.config/nvim"
 
 -- General setup
-g.mapleader = ' '
+g.mapleader = " "
 
-g.tex_flavor = 'latex'
+g.tex_flavor = "latex"
 
 opt.encoding = "utf-8"
 opt.lazyredraw = true
 opt.cursorline = true
-opt.guicursor = ''
+opt.guicursor = ""
 opt.smartcase = true
 opt.autoread = true
 opt.number = true
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.hidden = true
 opt.syntax = "enable"
 opt.scrolloff = 10

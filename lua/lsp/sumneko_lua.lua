@@ -1,12 +1,12 @@
 return {
-  settings = {
-    lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  },
-  flags = {
-    debounce_text_changes = 150,
-  }
+	settings = {
+		lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+	flags = {
+		debounce_text_changes = 150,
+	},
 }

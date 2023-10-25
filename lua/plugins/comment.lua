@@ -1,16 +1,14 @@
-local comment = require('Comment')
+local comment = require("Comment")
 
-comment.setup {
-  padding = true,
-  sticky = true,
-  mappings = {
-    basic = false,
-    extra = false,
-    extended = false,
-  },
+comment.setup({
+	padding = true,
+	sticky = true,
+	mappings = {
+		basic = false,
+		extra = false,
+		extended = false,
+	},
 
-  pre_hook = nil,
-  post_hook = nil,
-}
-
-
+	pre_hook = nil,
+	post_hook = nil,
+})

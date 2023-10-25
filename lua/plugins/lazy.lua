@@ -16,7 +16,7 @@ require("lazy").setup({
 		config = function()
 			require("plugins/rainbow-delimiters-nvim")
 		end,
-    dependencies = { "navarasu/onedark.nvim" }
+		dependencies = { "navarasu/onedark.nvim" },
 	},
 	{
 		"rcarriga/nvim-notify",
@@ -115,7 +115,7 @@ require("lazy").setup({
 		config = function()
 			require("plugins/telescope")
 		end,
-		dependencies = {"nvim-lua/plenary.nvim"},
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -134,7 +134,7 @@ require("lazy").setup({
 		config = function()
 			require("plugins/indent-blankline")
 		end,
-		dependencies = {"hiphish/rainbow-delimiters.nvim"},
+		dependencies = { "hiphish/rainbow-delimiters.nvim" },
 	},
 	{
 		"romgrk/barbar.nvim",

@@ -1,15 +1,12 @@
 local g = vim.g
 
-g.undotree_dir = '~/.cache/nvim/undotree_dir'
+g.undotree_dir = "~/.cache/nvim/undotree_dir"
 
 g.undotree_WindowLayout = 3
 g.undotree_ShortIndicators = 1
 g.undotree_SplitWidth = 30
 
-
-
-vim.cmd(
-[[
+vim.cmd([[
 if has("persistent_undo")
    let target_path = expand(undotree_dir)
 
@@ -22,7 +19,4 @@ if has("persistent_undo")
     let &undodir=target_path
     set undofile
 endif
-]]
-)
-
-
+]])
