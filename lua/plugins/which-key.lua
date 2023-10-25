@@ -68,6 +68,7 @@ wk.register({
 	},
 }, {
 	prefix = "<leader>",
+	mode = { "n", "v" },
 })
 
 wk.register({

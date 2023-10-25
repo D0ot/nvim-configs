@@ -36,6 +36,7 @@ require("lazy").setup({
 		end,
 	},
 
+	-- TODO: use none-ls
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
