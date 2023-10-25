@@ -43,7 +43,8 @@ local hi_func = function()
 end
 
 local higrp = vim.api.nvim_create_augroup("HighLightGroup", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme *", {
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
 	callback = hi_func,
 	group = higrp,
 })
@@ -57,7 +58,8 @@ local valid_rainbow = function()
 	vim.cmd("TSBufToggle rainbow")
 end
 local rainbow_grp = vim.api.nvim_create_augroup("TSRainbow", { clear = true })
-vim.api.nvim_create_autocmd("InsertLeave *", {
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
 	callback = valid_rainbow,
 	group = rainbow_grp,
 })
