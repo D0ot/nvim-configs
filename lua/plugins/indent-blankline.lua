@@ -42,6 +42,7 @@ local blankline = require("ibl").setup({
 	},
 })
 
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+-- TODO: got performance issue after enable this
+-- hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
 return blankline

@@ -1,6 +1,7 @@
 vim.g.plugin_manager = "lazy"
 
 require("lazy").setup({
+
 	-- vim plugin, not config needed
 	{ "dstein64/vim-startuptime" },
 
@@ -10,7 +11,18 @@ require("lazy").setup({
 		config = function()
 			require("plugins/onedark")
 		end,
+		lazy = false,
 	},
+
+	-- Profiler
+	{
+		"t-troebst/perfanno.nvim",
+		config = function()
+			require("plugins/perfanno-nvim")
+		end,
+		dependencies = { "navarasu/onedark.nvim" },
+	},
+
 	{
 		"hiphish/rainbow-delimiters.nvim",
 		config = function()
