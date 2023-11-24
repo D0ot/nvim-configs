@@ -100,6 +100,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"nvim-orgmode/orgmode",
+		event = "VeryLazy",
+		config = function()
+			require("plugins/orgmode")
+		end,
+	},
+	{
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		config = function()
