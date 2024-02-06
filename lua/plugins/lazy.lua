@@ -336,4 +336,8 @@ require("lazy").setup({
 			require("plugins/nvim-bqf")
 		end,
 	},
+	{
+		"mfussenegger/nvim-dap",
+		config = function() end,
+	},
 })
