@@ -247,8 +247,7 @@ wk.register({
 	r = {
 		r = { "<cmd>edit!<cr>", "Discard the edit, and reload the file" },
 	},
-	{
-		mode = { "n" },
-		prefix = "<leader>",
-	},
+}, {
+	mode = { "n" },
+	prefix = "<leader>",
 })
