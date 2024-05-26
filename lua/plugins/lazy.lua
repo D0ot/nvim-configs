@@ -340,4 +340,13 @@ require("lazy").setup({
 		"mfussenegger/nvim-dap",
 		config = function() end,
 	},
+	{
+		"scalameta/nvim-metals",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		ft = { "scala", "sbt", "java" },
+		opts = require("plugins/nvim-metals").opts,
+		config = require("plugins/nvim-metals").config,
+	}
 })

@@ -22,6 +22,9 @@ cmd("autocmd InsertLeave * call FcitxSaveInput()")
 cmd("autocmd VimEnter * call FcitxSaveInput()")
 cmd("autocmd InsertEnter * call FcitxRestoreInput()")
 
+-- to prevent some plugins from change cursor style
+cmd("autocmd OptionSet guicursor noautocmd set guicursor=")
+
 -- fix quickfix size
 -- local qfgrp = vim.api.nvim_create_augroup("QuickfixGroup", { clear = true })
 -- vim.api.nvim_create_autocmd("BufAdd FileType qf", {
