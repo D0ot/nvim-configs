@@ -356,5 +356,25 @@ require("lazy").setup({
 		ft = { "scala", "sbt", "java" },
 		opts = require("plugins/nvim-metals").opts,
 		config = require("plugins/nvim-metals").config,
-	}
+	},
+	-- lazy.nvim
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins/noice")
+		end,
+		enabled = true,
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	},
 })
