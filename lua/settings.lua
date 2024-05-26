@@ -12,7 +12,7 @@ g.mapleader = " "
 g.tex_flavor = "latex"
 
 opt.encoding = "utf-8"
-opt.lazyredraw = true
+opt.lazyredraw = false
 opt.cursorline = true
 opt.guicursor = ""
 opt.smartcase = true

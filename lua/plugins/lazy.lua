@@ -216,6 +216,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lua/lsp-status.nvim",
+		enabled = true,
 		config = function()
 			require("plugins/lsp-status-nvim")
 		end,

@@ -18,7 +18,7 @@ local all_grey = {
 
 local hooks = require("ibl.hooks")
 
-local blankline = require("ibl").setup({
+local config = {
 	enabled = true,
 	indent = {
 		char = "│",
@@ -40,7 +40,9 @@ local blankline = require("ibl").setup({
 		show_start = false,
 		show_end = false,
 	},
-})
+}
+
+local blankline = require("ibl").setup(config)
 
 -- TODO: got performance issue after enable this
 -- hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
