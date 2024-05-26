@@ -341,6 +341,14 @@ require("lazy").setup({
 		config = function() end,
 	},
 	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
 		"scalameta/nvim-metals",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
