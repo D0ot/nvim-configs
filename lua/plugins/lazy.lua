@@ -260,12 +260,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"ggandor/leap.nvim",
-		config = function()
-			-- require("plugins/leap")
-		end,
-	},
-	{
 		"williamboman/mason.nvim",
 		config = function()
 			require("plugins/mason")

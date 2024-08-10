@@ -70,6 +70,7 @@ local server_names = {
 	"texlab",
 	"pyright",
 	"bashls",
+	"rust_analyzer",
 }
 
 mason_lspconfig.setup({

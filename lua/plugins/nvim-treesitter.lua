@@ -17,6 +17,8 @@ require("nvim-treesitter.configs").setup({
 		"markdown",
 		"markdown_inline",
 		"org",
+		"luadoc",
+		"vimdoc",
 	},
 	highlight = {
 		enable = true,

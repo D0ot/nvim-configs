@@ -9,245 +9,144 @@ wk.setup({
 			motions = true,
 		},
 	},
-	operators = { ["<space>cC"] = "Comments" },
-	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
-		i = { "j", "k" },
-		v = { "j", "k" },
-		p = {},
-	},
 })
 
-local comment_api = require("Comment.api")
-
-wk.register({
-	b = {
-		name = "BufferLine",
-		d = { "<cmd>BufferClose<cr>", "Close Current Buffer" },
-		o = { "<cmd>BufferOrderByBufferNumber<cr>", "Order Buffer By Number" },
-		c = { "<cmd>BufferCloseAllButCurrent<cr>", "Close All Buffers But Keep Current" },
-		p = { "<cmd>BufferPick<cr>", "Pick A Buffer" },
-	},
-}, {
-	prefix = "<leader>",
+wk.add({
+	{ "<leader>b", group = "Buffer" },
+	{ "<leader>bd", "<cmd>BufferClose<cr>", desc = "Close Current Buffer" },
+	{ "<leader>bo", "<cmd>BufferOrderByBufferNumber<cr>", desc = "Order Buffers By Number" },
+	{ "<leader>bp", "<cmd>BufferPick<cr>", desc = "Pick A Buffer" },
+	{ "<leader>bc", "<cmd>BufferCloseAllButCurrent<cr>", desc = "Close All Buffers But Current One" },
 })
 
--- TODO: make multiline comments work
-wk.register({
-	c = {
-		name = "Comment",
-		c = { '<cmd>lua require("Comment.api").toggle.linewise.current()<cr>', "Comment linewise" },
-		b = { '<cmd>lua require("Comment.api").toggle.blockwise.current()<cr>', "Comment blockwise" },
-
-		-- TODO, to make the multi-line wise comment work
-		C = {
-			function()
-				local api = require("Comment.api")
-				api.call("toggle.linewise", "g@")
-			end,
-			"Comment linewise ex",
-		},
-
-		B = { '<cmd>lua require("Comment.api").call("toggle.blockwise")<cr>g@', "Comment blockwise ex" },
-
-		o = {
-			function()
-				comment_api.insert_linewise_below({})
-			end,
-			"Insert a line comment below",
-		},
-
-		O = {
-			function()
-				comment_api.insert_linewise_above({})
-			end,
-			"Insert a line comment above",
-		},
+wk.add({
+	{ "<leader>f", group = "Find" },
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+	{
+		"<leader>fF",
+		"<cmd>Telescope find_files find_command=rg,--no-ignore,--hiden,--files<cr>",
+		desc = "Find Files EX",
 	},
-}, {
-	prefix = "<leader>",
-	mode = { "n", "v" },
+	{ "<leader>fr", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+	{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find Recent Files" },
+	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find in Buffers" },
+	{ "<leader>ft", "<cmd>Telescope treesitter<cr>", desc = "Find Treesitter" },
+	{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find in Keymaps" },
+	{ "<leader>fn", "<cmd>Telescope notify<cr>", desc = "Find in Notify History" },
+	{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find in LSP Document Symbols" },
+	{ "<leader>fS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Find in Workspace Symbols" },
+	{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in Help Tags" },
+	{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "Find in TODO" },
+	{ "<leader>fm", "<cmd>Format <cr>", desc = "Format" },
+	{ "<leader>fp", "<cmd>Telescope planets<cr>", desc = "Find Planets" },
+	{ "<leader>fg", group = "Find Git" },
+	{ "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Find in Git status" },
+	{ "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Find in Git commits" },
+	{ "<leader>fgh", "<cmd>Telescope git_stash<cr>", desc = "Find in Git stash" },
 })
 
-wk.register({
-	f = {
-		name = "Find",
-		f = { "<cmd>Telescope find_files<cr>", "Find Files" },
-		F = { "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files<cr>", "Find Files EX" },
-		r = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-		o = { "<cmd>Telescope oldfiles<cr>", "Open Recent Files" },
-		b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-		t = { "<cmd>Telescope treesitter<cr>", "Find By Treesitter" },
-		k = { "<cmd>Telescope keymaps<cr>", "Find in keymaps" },
-		n = { "<cmd>Telescope notify<cr>", "Find in notify history" },
-		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Find in lsp document symbols" },
-		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Find in lsp workspace symbols" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find in neovim help tags" },
-		c = { "<cmd>TodoTelescope<cr>", "Find in TODO" },
-		m = { "<cmd>Format<cr>", "Code format" },
-		p = { "<cmd>Telescope planets<cr>", "Find in planets" },
-		g = {
-			s = { "<cmd>Telescope git_status<cr>", "Find in git status" },
-			c = { "<cmd>Telescope git_commits<cr>", "Find in git commits" },
-			h = { "<cmd>Telescope git_stash<cr>", "Find in git stash" },
-		},
+wk.add({
+	{ "<leader>n", group = "NVim and Misc" },
+	{ "<leader>nc", "<cmd>cd ~/.config/nvim<cr>", desc = "Nvim configs" },
+	{
+		"<leader>ng",
+		function()
+			Toggleterm_cmds.lazyconfig()
+		end,
+		desc = "Open lazygit with config root-dir and work-tree",
 	},
-}, {
-	prefix = "<leader>",
-})
-
-wk.register({
-	["<space>"] = { "<cmd>Telescope keymaps<cr>", "Find in keymaps" },
-}, {
-	prefix = "<leader>",
-})
-
-wk.register({
-	n = {
-		name = "NVim and Mics",
-		c = { "<cmd>cd ~/.config/nvim/<cr>", "Nvim configs" },
-		g = {
-			function()
-				Toggleterm_cmds.lazyconfig()
-			end,
-			"open lazygit with config root-dir and work-tree",
-		},
-	},
-}, {
-	prefix = "<leader>",
 })
 
 if vim.g.plugin_manager == "packer" then
-	wk.register({
-		p = {
-			name = "Packer",
-			s = { "<cmd>PackerSync<cr>", "Packer Sync" },
-			r = { '<cmd>:lua require("utils").packer_reload()<cr>', "Packer Reset" },
-			c = { "<cmd>PackerCompile<cr>", "Packer Compile" },
+	wk.add({
+		{ "<leader>p", group = "Package Manager" },
+		{ "<leader>ps", "<cmd>PackerSync<cr>", desc = "Packer Sync" },
+		{
+			"<leader>pr",
+			function()
+				require("utils").packer_reload()
+			end,
+			desc = "Packer Reset",
 		},
-	}, {
-		prefix = "<leader>",
+		{ "<leader>pc", "<cmd>PackerCompile<cr>", desc = "Packer Compile" },
 	})
 end
 
 if vim.g.plugin_manager == "lazy" then
-	wk.register({
-		p = {
-			name = "Lazy",
-			s = {
-				function()
-					require("lazy").sync()
-				end,
-				"Lazy Sync",
-			},
+	wk.add({
+		{ "<leader>p", group = "Package Manager" },
+		{
+			"<leader>ps",
+			function()
+				require("lazy").sync()
+			end,
+			desc = "Packer Sync",
 		},
-	}, {
-		prefix = "<leader>",
 	})
 end
 
-wk.register({
-	t = {
-		name = "NVimTree, ToggleTerm, and Toggles",
-		t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
-		f = { "<cmd>NvimTreeFocus<cr>", "Focus Tree" },
-		p = { "<cmd>NvimTreeClipboard<cr>", "Print clipboard content" },
-		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh the tree" },
-		g = {
-			function()
-				Toggleterm_cmds.lazygit()
-			end,
-			"Toggle lazygit",
-		},
-		d = {
-			function()
-				Toggleterm_cmds.lazydocker()
-			end,
-			"Toggle lazydocker",
-		},
-		o = { "<cmd>LSoutlineToggle<cr>", "Lspsaga LSP outline" },
+wk.add({
+	{ "<leader>t", group = "NVimTree, Terminal, Toggles" },
+	{ "<leader>tt", "<cmd>NvimTreeToggle<cr>", desc = "Toggle File Tree" },
+	{ "<leader>tf", "<cmd>NvimTreeFocus<cr>", desc = "Focus File Tree" },
+	{ "<leader>tp", "<cmd>NvimTreeToggle<cr>", desc = "Print Clipboard of NVimTree" },
+	{ "<leader>tr", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh File Tree" },
+	{
+		"<leader>tg",
+		function()
+			Toggleterm_cmds.lazygit()
+		end,
+		desc = "Toggle Lazygit",
 	},
-}, {
-	prefix = "<leader>",
-})
-
-wk.register({
-	u = {
-		name = "UndoTree",
-		t = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
-		f = { "<cmd>UndotreeFocus<cr>", "Focus Undotree" },
+	{
+		"<leader>td",
+		function()
+			Toggleterm_cmds.lazydocker()
+		end,
+		desc = "Toggle Lazydocker",
 	},
-}, {
-	prefix = "<leader>",
+	{ "<leader>to", "<cmd>Lspsaga outline", desc = "Toggle Lspsaga Outline" },
 })
 
-wk.register({
-	x = {
-		name = "Trouble",
-		x = { "<cmd>Trouble<cr>", "Trouble Default Mode" },
-		w = { "<cmd>Trouble workspace_diagnostics<cr>", "Trouble workspace" },
-		d = { "<cmd>Trouble document_diagnostics<cr>", "Trouble document" },
-		q = { "<cmd>Trouble quickfix<cr>", "Trouble quickfix" },
-		l = { "<cmd>Trouble loclist<cr>", "Trouble loclist" },
-		r = { "<cmd>Trouble lsp_references<cr>", "Trouble LSP referenes" },
-	},
-}, {
-	prefix = "<leader>",
+wk.add({
+	{ "<leader>u", group = "UndoTree" },
+	{ "<leader>ut", "<cmd>UndotreeToggle<cr>", desc = "Toggle UndoTree" },
+	{ "<leader>uf", "<cmd>UndotreeFocus<cr>", desc = "Focus UndoTree" },
 })
 
-wk.register({
-	s = { "<plug>(leap-forward-to)", "Leap forward, inclusive" },
-	S = { "<plug>(leap-backward-to)", "Leap backward, inclusive" },
-}, {
-	mode = { "n", "x", "o" },
-})
-
-wk.register({
-	x = { "<plug>(leap-forward-till)", "Leap forward till, exclusive" },
-	X = { "<plug>(leap-backward-till)", "Leap backward till, exclusive" },
-}, {
-	mode = { "o", "x" },
+wk.add({
+	{ "<leader>x", group = "Trouble" },
+	{ "<leader>xx", "<cmd> Trouble <cr>", desc = "Trouble Default Mode" },
+	{ "<leader>xw", "<cmd> Trouble workspace_diagnostics<cr>", desc = "Trouble" },
+	{ "<leader>xd", "<cmd> Trouble document_diagnostics<cr>", desc = "Trouble" },
+	{ "<leader>xq", "<cmd> Trouble quickfix<cr>", desc = "Trouble" },
+	{ "<leader>xl", "<cmd> Trouble loclist<cr>", desc = "Trouble" },
+	{ "<leader>xr", "<cmd> Trouble lsp_referencescr>", desc = "Trouble" },
 })
 
 local gs = require("gitsigns")
-wk.register({
-	g = {
-		d = { gs.diffthis, "Gitsigns diff this" },
-		n = { gs.next_hunk, "Gitsigns next hunk" },
-		p = { gs.prev_hunk, "Gitsigns prev hunk" },
-		r = { gs.reset_hunk, "Gitsigns reset hunk" },
-		s = { gs.stage_hunk, "Gitsigns stage hunk" },
-		u = { gs.undo_stage_hunk, "Gitsigns undo stage hunk" },
-		v = { gs.preview_hunk, "Gitsigns preview hunk" },
-		t = {
-			name = "Gitsigns toggle",
-			d = { gs.toggle_deleted, "Gitsigns toggle deleted" },
-			b = { gs.toggle_current_line_blame, "Gitsigns toggle blame" },
-		},
-	},
-}, {
-	mode = { "n" },
-	prefix = "<leader>",
+wk.add({
+	{ "<leader>g", group = "Git" },
+	{ "<leader>gd", gs.diffthis, desc = "Gitsigns diff this" },
+	{ "<leader>gn", gs.next_hunk, desc = "Gitsigns Next Hunk" },
+	{ "<leader>gp", gs.preview_hunk, desc = "Gitsigns Prev Hunk" },
+	{ "<leader>gr", gs.reset_hunk, desc = "Gitsigns Reset Hunk" },
+	{ "<leader>gs", gs.stage_hunk, desc = "Gitsigns Stage Hunk" },
+	{ "<leader>gu", gs.undo_stage_hunk, desc = "Gitsigns Undo Stage Hunk" },
+	{ "<leader>gv", gs.preview_hunk, desc = "Gitsigns Preview Hunk" },
+	{ "<leader>gt", group = "Gitsigns Toggles" },
+	{ "<leader>gtd", gs.toggle_deleted, desc = "Gitsigns Toggle Deleted" },
+	{ "<leader>gtb", gs.toggle_current_line_blame, desc = "Gitsigns Toggle Blame" },
 })
 
-wk.register({
-	q = {
-		o = { "<cmd>copen<cr>", "open QuickFix" },
-		p = { "<cmd>cpreviou<cr>", "open prev item in QuickFix" },
-		n = { "<cmd>cnext<cr>", "Open Next item in QuickFix" },
-	},
-}, {
-	mode = { "n" },
-	prefix = "<leader>",
+wk.add({
+	{ "<leader>q", group = "QuickFix" },
+	{ "<leader>qo", "<cmd>copen<cr>", desc = "Open QuickFix" },
+	{ "<leader>qp", "<cmd>cpreviou<cr>", desc = "Next Item in QuickFix" },
+	{ "<leader>qn", "<cmd>cnext<cr>", desc = "Prev Item in QuickFix" },
 })
 
-wk.register({
-	r = {
-		r = { "<cmd>edit!<cr>", "Discard the edit, and reload the file" },
-	},
-}, {
-	mode = { "n" },
-	prefix = "<leader>",
+wk.add({
+	{ "<leader>r", group = "Reload" },
+	{ "<leader>rr", group = "Reload Current Buffer, Discard Unsaved Changes" },
 })
