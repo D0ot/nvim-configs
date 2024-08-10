@@ -37,7 +37,7 @@ wk.add({
 	{ "<leader>fS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Find in Workspace Symbols" },
 	{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in Help Tags" },
 	{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "Find in TODO" },
-	{ "<leader>fm", "<cmd>Format <cr>", desc = "Format" },
+	{ "<leader>fm", require("conform").format, desc = "confirm" },
 	{ "<leader>fp", "<cmd>Telescope planets<cr>", desc = "Find Planets" },
 	{ "<leader>fg", group = "Find Git" },
 	{ "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Find in Git status" },

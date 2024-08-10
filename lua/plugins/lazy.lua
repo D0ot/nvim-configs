@@ -266,12 +266,6 @@ require("lazy").setup({
 		config = function()
 			require("plugins/mason")
 		end,
-	}, -- NOTE: make sure the which-key is the last one
-	{
-		"folke/which-key.nvim",
-		config = function()
-			require("plugins/which-key")
-		end,
 	},
 	{
 		"folke/flash.nvim",
@@ -375,7 +369,17 @@ require("lazy").setup({
 		},
 	},
 	{ "folke/zen-mode.nvim" },
+	{ "folke/twilight.nvim" },
 	{
-		"folke/twilight.nvim",
+		"stevearc/conform.nvim",
+		config = function()
+			require("plugins/conform")
+		end,
+	},
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("plugins/which-key")
+		end,
 	},
 })
