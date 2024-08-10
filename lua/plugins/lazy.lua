@@ -374,4 +374,8 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
+	{ "folke/zen-mode.nvim" },
+	{
+		"folke/twilight.nvim",
+	},
 })

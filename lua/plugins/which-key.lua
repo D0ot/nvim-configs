@@ -106,6 +106,7 @@ wk.add({
 		desc = "Toggle Lazydocker",
 	},
 	{ "<leader>to", "<cmd>Lspsaga outline", desc = "Toggle Lspsaga Outline" },
+	{ "<leader>tz", "<cmd>ZenMode<cr>", desc = "Enable Zen Mode and Trilight" },
 })
 
 wk.add({
@@ -148,5 +149,5 @@ wk.add({
 
 wk.add({
 	{ "<leader>r", group = "Reload" },
-	{ "<leader>rr", group = "Reload Current Buffer, Discard Unsaved Changes" },
+	{ "<leader>rr", "<cmd>edit!<cr>", desc = "Reload Current Buffer, Discard Unsaved Changes" },
 })
