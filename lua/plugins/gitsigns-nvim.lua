@@ -1,9 +1,9 @@
 require("gitsigns").setup({
 	signs = {
-		add = { text = "▋"},
-		change = { text = "▋"},
-		delete = { text = "▋"},
-		topdelete = { text = "▔"},
+		add = { text = "▋" },
+		change = { text = "▋" },
+		delete = { text = "▋" },
+		topdelete = { text = "▔" },
 		changedelete = { text = "~" },
 		untracked = { text = "┇" },
 	},
@@ -35,5 +35,5 @@ require("gitsigns").setup({
 		relative = "cursor",
 		row = 0,
 		col = 1,
-	}
+	},
 })

@@ -94,6 +94,8 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/nvim-treesitter-refactor",
+			"antoinemadec/FixCursorHold.nvim",
 		},
 		config = function()
 			require("plugins/nvim-treesitter")

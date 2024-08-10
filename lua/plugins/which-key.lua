@@ -129,7 +129,7 @@ wk.add({
 	{ "<leader>g", group = "Git" },
 	{ "<leader>gd", gs.diffthis, desc = "Gitsigns diff this" },
 	{ "<leader>gn", gs.next_hunk, desc = "Gitsigns Next Hunk" },
-	{ "<leader>gp", gs.preview_hunk, desc = "Gitsigns Prev Hunk" },
+	{ "<leader>gp", gs.prev_hunk, desc = "Gitsigns Prev Hunk" },
 	{ "<leader>gr", gs.reset_hunk, desc = "Gitsigns Reset Hunk" },
 	{ "<leader>gs", gs.stage_hunk, desc = "Gitsigns Stage Hunk" },
 	{ "<leader>gu", gs.undo_stage_hunk, desc = "Gitsigns Undo Stage Hunk" },
