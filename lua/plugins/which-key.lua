@@ -38,11 +38,14 @@ wk.add({
 	{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in Help Tags" },
 	{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "Find in TODO" },
 	{ "<leader>fm", require("conform").format, desc = "confirm" },
-	{ "<leader>fp", "<cmd>Telescope planets<cr>", desc = "Find Planets" },
+	{ "<leader>fp", function ()
+		require("telescope").extensions.projects.projects{}
+	end, desc = "Find Planets" },
 	{ "<leader>fg", group = "Find Git" },
-	{ "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Find in Git status" },
+	{ "<leader>fgb", "<cmd>Telescope git_branches<cr>", desc = "Find in Git branches" },
 	{ "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Find in Git commits" },
 	{ "<leader>fgh", "<cmd>Telescope git_stash<cr>", desc = "Find in Git stash" },
+	{ "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Find in Git status" },
 })
 
 wk.add({

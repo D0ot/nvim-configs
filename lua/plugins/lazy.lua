@@ -376,6 +376,13 @@ require("lazy").setup({
 			require("plugins/conform")
 		end,
 	},
+	{ "sindrets/diffview.nvim" },
+	{
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("plugins/project")
+		end,
+	},
 	{
 		"folke/which-key.nvim",
 		config = function()

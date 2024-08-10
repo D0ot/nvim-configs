@@ -35,3 +35,4 @@ opt.clipboard = "unnamedplus"
 opt.filetype = "plugin"
 
 opt.colorcolumn = "80"
+opt.title = true

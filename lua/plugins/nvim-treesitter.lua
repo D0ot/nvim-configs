@@ -38,8 +38,10 @@ require("nvim-treesitter.configs").setup({
 		},
 		highlight_current_scope = { enable = false },
 		highlight_definitions = {
-			enable = true,
+			enable = false,
 			-- Set to false if you have an `updatetime` of ~100.
+			-- TODO: It has performance issue, open linux/mm/page_alloc.c,
+			-- cursor will moves slowly...
 		},
 	},
 })
