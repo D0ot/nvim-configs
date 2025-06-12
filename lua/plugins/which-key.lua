@@ -38,9 +38,13 @@ wk.add({
 	{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in Help Tags" },
 	{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "Find in TODO" },
 	{ "<leader>fm", require("conform").format, desc = "confirm" },
-	{ "<leader>fp", function ()
-		require("telescope").extensions.projects.projects{}
-	end, desc = "Find Planets" },
+	{
+		"<leader>fp",
+		function()
+			require("telescope").extensions.projects.projects({})
+		end,
+		desc = "Find Planets",
+	},
 	{ "<leader>fg", group = "Find Git" },
 	{ "<leader>fgb", "<cmd>Telescope git_branches<cr>", desc = "Find in Git branches" },
 	{ "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Find in Git commits" },
@@ -108,7 +112,7 @@ wk.add({
 		end,
 		desc = "Toggle Lazydocker",
 	},
-	{ "<leader>to", "<cmd>Lspsaga outline", desc = "Toggle Lspsaga Outline" },
+	{ "<leader>to", "<cmd>Lspsaga outline<cr>", desc = "Toggle Lspsaga Outline" },
 	{ "<leader>tz", "<cmd>ZenMode<cr>", desc = "Enable Zen Mode and Trilight" },
 })
 
@@ -153,4 +157,11 @@ wk.add({
 wk.add({
 	{ "<leader>r", group = "Reload" },
 	{ "<leader>rr", "<cmd>edit!<cr>", desc = "Reload Current Buffer, Discard Unsaved Changes" },
+})
+
+wk.add({
+	{ "<leader>h", group = "Health" },
+	{ "<leader>hl", "<cmd>checkhealth vim.lsp<cr>", desc = "Check LSP health" },
+	{ "<leader>hh", "<cmd>checkhealth vim.health<cr>", desc = "Check NeoVim Health" },
+	{ "<leader>hd", "<cmd>checkhealth vim.deprecated<cr>", desc = "Check NeoVim deprecated api usage" },
 })

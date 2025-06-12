@@ -52,21 +52,11 @@ require("lazy").setup({
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
-			require("plugins/null-ls")
+			-- require("plugins/null-ls")
 		end,
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	-- lsp client
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("plugins/nvim-lspconfig")
-		end,
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"folke/neodev.nvim",
-		},
-	},
 	{
 		"windwp/nvim-autopairs",
 		config = function()
@@ -171,13 +161,6 @@ require("lazy").setup({
 		end,
 	},
 	-- use("ray-x/lsp_signature.nvim")
-
-	{
-		"lewis6991/spellsitter.nvim",
-		config = function()
-			require("plugins/spellsitter")
-		end,
-	},
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
@@ -378,15 +361,18 @@ require("lazy").setup({
 	},
 	{ "sindrets/diffview.nvim" },
 	{
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("plugins/project")
-		end,
-	},
-	{
 		"folke/which-key.nvim",
 		config = function()
 			require("plugins/which-key")
+		end,
+	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
 		end,
 	},
 })
