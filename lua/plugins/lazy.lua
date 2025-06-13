@@ -188,10 +188,8 @@ require("lazy").setup({
 	},
 	{
 		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("plugins/nvim-trouble")
-		end,
+		cmd = "Trouble",
+		opts = require("plugins/nvim-trouble")
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -375,4 +373,15 @@ require("lazy").setup({
 			vim.g.vimtex_view_method = "zathura"
 		end,
 	},
+	{
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 })

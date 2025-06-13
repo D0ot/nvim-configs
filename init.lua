@@ -15,3 +15,5 @@ require("lsp")
 -- harpoon
 -- stack of quickfix
 -- better title
+-- blink.cmp
+

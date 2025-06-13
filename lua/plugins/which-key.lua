@@ -41,7 +41,7 @@ wk.add({
 	{
 		"<leader>fp",
 		function()
-			require("telescope").extensions.projects.projects({})
+			-- require("telescope").extensions.projects.projects({})
 		end,
 		desc = "Find Planets",
 	},
@@ -124,20 +124,45 @@ wk.add({
 
 wk.add({
 	{ "<leader>x", group = "Trouble" },
-	{ "<leader>xx", "<cmd> Trouble <cr>", desc = "Trouble Default Mode" },
-	{ "<leader>xw", "<cmd> Trouble workspace_diagnostics<cr>", desc = "Trouble" },
-	{ "<leader>xd", "<cmd> Trouble document_diagnostics<cr>", desc = "Trouble" },
-	{ "<leader>xq", "<cmd> Trouble quickfix<cr>", desc = "Trouble" },
-	{ "<leader>xl", "<cmd> Trouble loclist<cr>", desc = "Trouble" },
-	{ "<leader>xr", "<cmd> Trouble lsp_referencescr>", desc = "Trouble" },
+	{ "<leader>xx", "<cmd> Trouble diagnostics toggle focus=true filter.buf=0<cr>", desc = "Trouble Default Mode" },
+	{ "<leader>xq", "<cmd> Trouble quickfix<cr>", desc = "Trouble QuickFix" },
+	{ "<leader>xl", "<cmd> Trouble loclist<cr>", desc = "Trouble loclist" },
+	{
+		"<leader>xr",
+		function()
+			require("trouble.api").refresh()
+		end,
+		desc = "Trouble lsp_ref",
+	},
+	{ "<leader>xR", "<cmd> Trouble lsp_references<cr>", desc = "Trouble LSP" },
+	{
+		"<leader>xs",
+		"<cmd>Trouble lsp_document_symbols toggle focus=false win.position=right<cr>",
+		desc = "Symbols (Trouble)",
+	},
+	{ "<leader>xS", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols (Trouble)" },
+	{ "<leader>xi", "<cmd>Trouble lsp_incoming_calls toggle<cr>", desc = "Incomming Calls	(Trouble)" },
+	{ "<leader>xo", "<cmd>Trouble lsp_outgoing_calls toggle<cr>", desc = "Outgoing Calls	(Trouble)" },
 })
 
 local gs = require("gitsigns")
 wk.add({
 	{ "<leader>g", group = "Git" },
 	{ "<leader>gd", gs.diffthis, desc = "Gitsigns diff this" },
-	{ "<leader>gn", gs.next_hunk, desc = "Gitsigns Next Hunk" },
-	{ "<leader>gp", gs.prev_hunk, desc = "Gitsigns Prev Hunk" },
+	{
+		"<leader>gn",
+		function()
+			gs.nav_hunk("next")
+		end,
+		desc = "Gitsigns Next Hunk",
+	},
+	{
+		"<leader>gp",
+		function()
+			gs.nav_hunk("next")
+		end,
+		desc = "Gitsigns Next Hunk",
+	},
 	{ "<leader>gr", gs.reset_hunk, desc = "Gitsigns Reset Hunk" },
 	{ "<leader>gs", gs.stage_hunk, desc = "Gitsigns Stage Hunk" },
 	{ "<leader>gu", gs.undo_stage_hunk, desc = "Gitsigns Undo Stage Hunk" },
