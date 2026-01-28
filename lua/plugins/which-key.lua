@@ -28,6 +28,13 @@ wk.add({
 		desc = "Find Files EX",
 	},
 	{ "<leader>fr", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+	{
+		"<leader>fR",
+		function()
+			require("telescope.builtin").live_grep({ additional_args = { "--no-ignore" } })
+		end,
+		desc = "Live Grep EX",
+	},
 	{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find Recent Files" },
 	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find in Buffers" },
 	{ "<leader>ft", "<cmd>Telescope treesitter<cr>", desc = "Find Treesitter" },

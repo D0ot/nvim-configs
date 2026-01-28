@@ -2,6 +2,9 @@ local saga = require("lspsaga")
 saga.setup({
 	finder_request_timeout = 5000,
 	finder = {
+		max_hight = 0.8,
+		left_width = 0.4,
+		right_width = 0.4,
 		layout = "float",
 	},
 	symbol_in_winbar = {

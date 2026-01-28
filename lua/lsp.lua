@@ -74,7 +74,7 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.config("clangd", {
-	filetypes = { "c", "cpp" },
+	filetypes = { "c", "cpp", "h" },
 	on_attach = on_attach
 })
 
@@ -83,6 +83,12 @@ vim.lsp.config("lua_ls", {
 	on_attach = on_attach
 })
 
+vim.lsp.config("rust_analyzer", {
+	filetypes = { "rust" },
+	on_attach = on_attach,
+})
+
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("rust_analyzer")
