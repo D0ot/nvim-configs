@@ -166,9 +166,9 @@ wk.add({
 	{
 		"<leader>gp",
 		function()
-			gs.nav_hunk("next")
+			gs.nav_hunk("prev")
 		end,
-		desc = "Gitsigns Next Hunk",
+		desc = "Gitsigns Previous Hunk",
 	},
 	{ "<leader>gr", gs.reset_hunk, desc = "Gitsigns Reset Hunk" },
 	{ "<leader>gs", gs.stage_hunk, desc = "Gitsigns Stage Hunk" },
@@ -196,4 +196,10 @@ wk.add({
 	{ "<leader>hl", "<cmd>checkhealth vim.lsp<cr>", desc = "Check LSP health" },
 	{ "<leader>hh", "<cmd>checkhealth vim.health<cr>", desc = "Check NeoVim Health" },
 	{ "<leader>hd", "<cmd>checkhealth vim.deprecated<cr>", desc = "Check NeoVim deprecated api usage" },
+})
+
+wk.add({
+	{ "[c", function ()
+		require("treesitter-context").go_to_context(vim.v.count1)
+	end},
 })

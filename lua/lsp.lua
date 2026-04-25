@@ -66,6 +66,7 @@ local server_names = {
 	"pyright",
 	"bashls",
 	"rust_analyzer",
+	"ansiblels",
 }
 
 vim.lsp.config("*", {
@@ -88,7 +89,18 @@ vim.lsp.config("rust_analyzer", {
 	on_attach = on_attach,
 })
 
+vim.lsp.config("ansiblels", {
+	filetypes = { "yaml.ansible", "ansible" },
+	on_attach = on_attach,
+})
+
+vim.lsp.config("bashls", {
+	filetypes = { "sh", "bash" },
+	on_attach = on_attach,
+})
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("ansiblels")
+vim.lsp.enable("bashls")

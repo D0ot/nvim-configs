@@ -82,11 +82,9 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			"nvim-treesitter/nvim-treesitter-refactor",
-			"antoinemadec/FixCursorHold.nvim",
-		},
+		lazy = false,
+		build = ":TSUpdate",
+
 		config = function()
 			require("plugins/nvim-treesitter")
 		end,
@@ -108,6 +106,18 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		init = function()
+			-- Disable entire built-in ftplugin mappings to avoid conflicts.
+			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+			vim.g.no_plugin_maps = true
+
+			-- Or, disable per filetype (add as you like)
+			-- vim.g.no_python_maps = true
+			-- vim.g.no_ruby_maps = true
+			-- vim.g.no_rust_maps = true
+			-- vim.g.no_go_maps = true
+		end,
 		config = function()
 			require("plugins/nvim-treesitter-textobjects")
 		end,
@@ -385,52 +395,18 @@ require("lazy").setup({
 		},
 	},
 	{
-		"yetone/avante.nvim",
-		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-		-- ⚠️ must add this setting! ! !
-		build = "make",
+		"chrisgrieser/nvim-origami",
 		event = "VeryLazy",
-		version = false, -- Never set this value to "*"! Never!
-		---@module 'avante'
-		---@type avante.Config
-		opts = require("plugins/avante"),
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below dependencies are optional,
-			"nvim-mini/mini.pick", -- for file_selector provider mini.pick
-			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-			"ibhagwan/fzf-lua", -- for file_selector provider fzf
-			"stevearc/dressing.nvim", -- for input provider dressing
-			"folke/snacks.nvim", -- for input provider snacks
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				-- support for image pasting
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					-- recommended settings
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = {
-							insert_mode = true,
-						},
-						-- required for Windows users
-						use_absolute_path = true,
-					},
-				},
-			},
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-		},
+		opts = {}, -- required even when using default config
+
+		-- recommended: disable vim's auto-folding
+		init = function()
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+		end,
+
+		config = function()
+			require("plugins/nvim-origama")
+		end,
 	},
 })

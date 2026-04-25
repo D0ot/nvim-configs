@@ -1,4 +1,4 @@
 return {
-	cmd = { "clangd", "--clang-tidy", "--background-index", "--cross-file-rename"},
+	cmd = { "clangd", "--clang-tidy"},
 	root_markers = { ".clangd", "compile_commands.json" },
 }
